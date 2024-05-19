@@ -1,0 +1,80 @@
+<% layout("/layouts/boilerplate") %>
+<body>
+
+
+  <div class="row">
+    <div class="col-8  offset-2">
+  <h1> Create a New Listing</h1>
+
+  <form action="/listings" method="Post"  novalidate class="needs-validation" >
+   
+  <!-- <div class="mb-3">
+    <label for="validationCustom01" for="title"class="form-lable">Title<label>
+      <br>
+    <input type="text" class="form-control" id="validationCustom01" name="listing[title] "  value="" required> 
+    <div class="valid-feedback">
+      Looks good!
+    </div>
+  </div> -->
+
+
+
+  <div class="md-3">
+    <label for="validationCustom01" class="form-label">Title</label>
+    <input type="text" class="form-control" id="validationCustom01"  name="listing[title] " value="" >
+    <div class="valid-feedback">
+      Looks good!
+    </div>
+
+
+ <div>
+  <label for="Description" for="validationServerUsername" class="form-lable">Description</label>
+  <textarea class="form-control"  name="listing[description]" id="" cols="15" rows="5" required></textarea>
+  <div class="valid-feedback">  Looks good!</div>
+</div >
+
+
+<div class="row   ">
+<div class="col-4" > 
+  <label for="validationServerUsername" for="price"class="form-lable">Price</label>
+
+  <input type="number"  class="form-control" name="listing[price] " id="" required>
+
+</div>
+
+
+
+
+ <div class=" col-8" >
+  <label for="validationServerUsername" for="country"class="form-lable">Country</label>
+  <input type="text" class="form-control"  name="listing[country]" >
+ </div>
+
+
+
+
+
+
+
+</div>
+ <div>
+  <label for="validationServerUsername" for="image"class="form-lable">Image URL</label>
+  <input type="text" class="form-control"  name="listing[image]" id="" required>
+ 
+
+ </div>
+  
+ <div>
+  <label for="validationServerUsername" for="location"class="form-lable">Location</label>
+  <input type="text" class="form-control" name="listing[location] " id="" required>
+ </div>
+  
+
+
+    <button class="btn btn-primary">Add New</button>
+  </form>
+
+</div>
+</div>
+
+</body>

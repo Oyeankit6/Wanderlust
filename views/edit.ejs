@@ -1,0 +1,54 @@
+<% layout("/layouts/boilerplate") %>
+<body>
+  <h1>Edit your informations</h1>
+  <form method="POST" action="/listings/<%= listing._id %>" method="/listing/<%= listing._id %>?_method=PUT" novalidate class="needs-validation">
+
+    <div class="mb-3">
+       <label for="title"class="form-lable">Title</label>
+  
+    <input type="text"  value="<%= listing.title  %>" class="form-control" name="listing[title] " id="">
+    </div>
+
+
+
+    <div>
+      <label for="Description"class="form-lable">Description</label>
+      <textarea class="form-control"  name="listing[description]" id="" cols="15" rows="5" required ><%= listing.description %></textarea>
+    </div >
+
+   
+<div class="row   ">
+  <div class="col-4" > 
+    <label for="price"class="form-lable">Price</label>
+  
+    <input type="number"  value="<%= listing.price  %>" class="form-control" name="listing[price] " id="">
+  
+  </div>
+  
+  
+  
+  
+   <div class=" col-8" >
+    <label for="country"class="form-lable">Country</label>
+    <input type="text" class="form-control"  value="<%=listing.country%>"  name="listing[country]">
+   </div>
+  
+  
+  
+  
+  
+  
+  
+  </div>
+   
+
+  <div>
+    <label for="location"class="form-lable">Location</label>
+    <input type="text" class="form-control" value="<%=listing.location%>"  name="listing[location] " id="">
+   </div>
+
+
+  <button class="btn btn-primary mt-5 mb-3"> Edit</button>
+  </form>
+
+</body>

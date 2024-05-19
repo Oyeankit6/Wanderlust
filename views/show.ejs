@@ -1,0 +1,163 @@
+<% layout("/layouts/boilerplate") %>
+<script>
+ const mapToken = "<%= process.env.MAP_TOKEN %>"
+</script>
+<body>
+  <div class="row">
+  <div class="col-8  offset-2 ">
+   <h1><%= listing.title %></h1>
+
+    <div class="card mb-3 ">
+      <img src="<%= listing.image %>" class="card-img-top atz" alt="...">
+      <div class="card-body">
+        <h5 class="card-title"><%= listing.title %></h5>
+        <p class="card-text"><i><%= listing.owner.username %></i></p>
+     
+        <p class="card-text"><%= listing.description %></p>
+        <p class="card-text">&#8377;
+          <%= listing.price %></p>
+        <p class="card-text"><small class="text-body-secondary"><%= listing.location %>(<%= listing.country %>)</small></p>
+      </div>
+    </div>
+ <% if(curruser && listing.owner._id.equals(curruser._id)){ %>
+   
+    <div class="card-body">
+      <a href="/listings/<%=listing._id %>/edit" class="card-link btn btn-primary">Edit listing</a>
+
+      <form action="/listings/<%=listing._id %>?_method=Delete" method="post"><button class="card-link btn btn-danger mt-3">Delete</button></form>
+
+    </div>
+  </div>
+ <% } %>
+
+</div>
+
+
+
+</div>
+
+<hr/>
+<% if(curruser) {%>
+
+<div class="col-8 offset-3">
+  
+  <h4>
+    Leave a Review
+  </h4>
+
+
+
+  <form action="/listings/<%=listing._id %>/review" method="post" novalidate class="needs-validation"> 
+   
+
+    <div class="card-footer py-3 border-0">
+      <div class="d-flex flex-start w-100">
+        <img class="rounded-circle shadow-1-strong me-3"
+          src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(19).webp" alt="avatar" width="40"
+          height="40" />
+        <div data-mdb-input-init class="form-outline w-100">
+          <div>
+            <label for="rating" class="form-lable">Rating</label>
+            <input type="range" name="review[rating]" class="form-range" min="1" max="5" id="rating" >
+              </div>
+          <textarea name="review[comment]" class="form-control" id="textAreaExample" rows="4"
+            style="background: #fff;"></textarea>
+          <label class="form-label" for="textAreaExample">Message</label>
+          <button type="submit" data-mdb-button-init data-mdb-ripple-init class="btn btn-primary btn-sm">Post comment</button> 
+        </div>
+      </div>
+    
+    </div>
+    <% } %>
+  </div>
+
+
+  </form>
+
+
+
+</div>
+
+<hr/>
+<div class="col-8  offset-2 ">
+<h2>All Review</h2>
+
+<%for ( review of listing.reviews){%>
+
+    <div class="container">
+    <div class="row d-flex justify-content-center">
+          <div class="card">
+            <div class="card-body">
+              <div class="d-flex flex-start align-items-center">
+                <img class="rounded-circle shadow-1-strong me-3"
+                  src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(19).webp" alt="avatar" width="60"
+                  height="60" />
+                <div>
+                  <h6 class="fw-bold text-primary mb-1">Baby Doll</h6>
+                  <p class="text-muted small mb-0">
+                    <%= review.createdAt %>
+                  </p>
+                </div>
+              </div>
+  
+              <p class="pb-2">
+                <%= review.comment  %>
+              </p>
+
+              <p>
+                Rating:<%= review.rating %> Stars
+              </p>
+              <form method="post" action="/listings/<%= listing._id%>/review/<%=review._id%>?_method=Delete"><button>Delete</button></form>
+            
+            </div>
+           
+          </div>
+      </div>
+  
+  
+
+
+<hr/>
+
+
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+<%}%>
+</div>
+   <Div class="col-8 offset-3 mb3">
+    <h2>Where you'll be</h2>
+   <div id="map"></div>
+    
+   
+   </Div>
+
+</div>
+<script src="/scriptt/map.js"></script>
+
+  
+
+
+<!--   
+    <li><%= listing.title %>
+    <li><%= listing.description %></li>
+    <li>	 &#8377; <%=listing.price %> </li>
+    <li><%= listing.location %></li>
+    <li><%= listing.country %></li>
+    <form action="/listing/<%=listing._id %>/edit" method="get"><button>edit</button></form>
+    <br><br>
+    <form action="/listing/<%=listing._id %>?_method=Delete" method="post"><button>Delete</button></form>
+
+  </ul> -->
+</body>
